@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Planos — NotaFácil MEI</title>
+<style>
+:root{
+  --bg:#f6f7fb;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --accent:#0b84ff;
+  --accent-strong:#0066d6;
+  --success:#10b981;
+  --glass:rgba(255,255,255,0.6);
+  font-family:Inter, sans-serif;
+}
+body{
+  margin:0;
+  padding:24px;
+  background:linear-gradient(180deg,#f6f7fb,#eef2f7);
+  display:flex;
+  justify-content:center;
+}
+.app{
+  width:100%;
+  max-width:1500px;
+  background:var(--card);
+  border-radius:18px;
+  box-shadow:0 12px 40px rgba(16, 24, 40, 0.226);
+  overflow:hidden;
+}
+.topbar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:20px 28px;
+  border-bottom:1px solid #eef0f5;
+  background:linear-gradient(180deg,rgba(255,255,255,0.7),rgba(255,255,255,0.4));
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.logo{
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),var(--accent-strong));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  font-weight:700;
+  font-size:18px;
+  box-shadow:0 6px 18px rgba(11,132,255,0.14);
+}
+.brand h1{ margin:0; font-size:16px; }
+.brand p{ margin:0; font-size:12px; color:var(--muted); }
+
+.banner{
+  width:100%;
+  padding:50px 30px;
+  text-align:center;
+  background:linear-gradient(135deg,var(--accent),var(--accent-strong));
+  color:white;
+}
+.banner h2{ font-size:32px; margin:0; }
+.banner p{ font-size:16px; opacity:0.9; }
+
+.cards{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  padding:40px 30px;
+  
+}
+.card{
+  background:var(--card);
+  width:50%;
+  padding:24px;
+  border-radius:14px;
+  box-shadow:0 4px 16px rgba(0,0,0,0.05);
+  text-align:center;
+  box-shadow:0 12px 40px rgba(16, 24, 40, 0.226);
+
+}
+.card h3{ margin:0 0 10px; font-size:20px; }
+.card p{ color:var(--muted); font-size:14px; }
+.card button{
+  margin-top:18px;
+  background:var(--accent);
+  border:none;
+  color:white;
+  padding:12px 18px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.review-banner{
+  margin-top:40px;
+  padding:40px;
+  background:linear-gradient(180deg,var(--card),var(--glass));
+}
+.review{
+  background:white;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.06);
+  display:flex;
+  gap:20px;
+  position:relative;
+  box-shadow:0 12px 40px rgba(16, 24, 40, 0.226);
+
+}
+.review img{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  object-fit:cover;
+}
+.stars{
+  color:#fbbf24;
+  font-size:20px;
+}
+.plan-type{
+  position:absolute;
+  right:20px;
+  top:20px;
+  background:var(--accent);
+  color:white;
+  padding:6px 12px;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:600;
+}
+.review-text p{
+  color:var(--muted);
+}
+</style>
+</head>
+<body>
+<main class="app">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">NF</div>
+      <div>
+        <h1>NotaFácil MEI</h1>
+        <p>Facilitando a vida do Microempreendedor</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="banner">
+    <h2>Escolha o plano perfeito para o seu MEI</h2>
+    <p>Emita notas, organize clientes e simplifique tudo em poucos cliques!</p>
+  </section>
+
+  <section class="cards">
+    <div class="card">
+      <h3>Plano Básico</h3>
+      <p>5 notas mensais, suporte por e-mail e painel básico.</p>
+      <button class="Acessar">Acessar Plano</button>
+    </div>
+    <div class="card">
+      <h3>Plano Profissional</h3>
+      <p>Notas ilimitadas, dashboard completo e suporte rápido.</p>
+      <button>Acessar Plano</button>
+    </div>
+    <div class="card">
+      <h3>Plano Premium</h3>
+      <p>Suporte prioritário, IA para dúvidas e relatórios avançados.</p>
+      <button>Acessar Plano</button>
+    </div>
+  </section>
+
+  <section class="review-banner">
+    <div class="review">
+      <img src="https://i.pravatar.cc/150" alt="User" />
+      <div class="review-text">
+        <h3>Mariana Souza</h3>
+        <div class="stars">★★★★★</div>
+        <p>"O sistema mudou meu fluxo de trabalho. Rápido, simples e intuitivo."</p>
+      </div>
+      <div class="plan-type">Plano Premium</div>
+    </div>
+  </section>
+</main>
+
+<script>
+  // Seleciona o botão de voltar usando a classe .ghost da topbar
+  const btnVoltar = document.querySelector(".Acessar");
+
+  // Ao clicar, redireciona para o dashboard
+  btnVoltar.addEventListener("click", () => {
+    window.location.href = "index2.html"; 
+  });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,169 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Mockup_telaDeEmissãoDeNota</title>
+</head>
+<body>
+    <main class="app" role="main" aria-labelledby="dashboardTitle">
+    <!-- Topbar -->
+    <div class="topbar" role="region" aria-label="Cabeçalho do sistema">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">NF</div>
+        <div>
+          <h1 id="dashboardTitle">NotaFácil MEI</h1>
+          <p>Emita sua nota em menos de 1 minuto</p>
+        </div>
+      </div>
+
+      <div class="top-actions" role="navigation" aria-label="Ações rápidas">
+        <button class="primary-btn" id="emitBtn">Emitir Nota Fiscal</button>
+      </div>
+    </div>
+
+    <!-- Left column / main -->
+    <section class="main" aria-labelledby="mainInfo">
+      <div class="cards" aria-hidden="false">
+        <div class="card" role="article" aria-label="Total faturado no mês">
+          <div class="label">Total faturado no mês</div>
+          <div class="value" id="monthTotal">R$ 3.200,00</div>
+        </div>
+        <div class="card" role="article" aria-label="Total de notas emitidas">
+          <div class="label">Total de notas emitidas</div>
+          <div class="value" id="notesCount">12</div>
+        </div>
+        <div class="card" role="article" aria-label="Limite do MEI">
+          <div class="label">Limite anual do MEI</div>
+          <div class="value" id="meiLimit">R$ 81.000,00</div>
+        </div>
+      </div>
+
+      <div class="notes" role="region" aria-label="Últimas notas">
+        <h2>Últimas notas emitidas</h2>
+        <table class="notes-list" aria-describedby="latestNotesDesc">
+          <tbody>
+            <tr>
+              <td class="date">01/12</td>
+              <td class="client">João Silva</td>
+              <td class="amount">R$ 300,00</td>
+            </tr>
+            <tr>
+              <td class="date">28/11</td>
+              <td class="client">Maria Santos</td>
+              <td class="amount">R$ 450,00</td>
+            </tr>
+            <tr>
+              <td class="date">25/11</td>
+              <td class="client">Padaria Central</td>
+              <td class="amount">R$ 200,00</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <a class="view-all" href="#" onclick="alert('Ver todas as notas (demo)'); return false;">Ver todas as notas →</a>
+      </div>
+    </section>
+
+    <!-- Right column / support -->
+    <aside class="right" aria-label="Suporte e chatbot">
+      <div class="support-card" role="region" aria-label="Painel de suporte">
+        <h3>Chatbot de suporte</h3>
+        <p style="margin:0;color:var(--muted);font-size:13px">Tire dúvidas rápidas sobre emissão de notas e erros.</p>
+
+        <div class="chat-window" id="chatWindow" aria-live="polite">
+          <div class="msg bot">Olá! Eu sou o Assistente NotaFácil. Posso ajudar a emitir uma nota ou resolver um erro. Experimente: "Como emitir nota?"</div>
+        </div>
+
+        <div class="chat-input" role="form" aria-label="Enviar mensagem">
+          <input id="chatInput" autocomplete="off" placeholder="Digite sua pergunta (ex: Como emitir nota?)" aria-label="Mensagem para o assistente"/>
+          <button class="chat-send" id="sendBtn">Enviar</button>
+        </div>
+
+        <div class="example-queries" aria-hidden="false">
+          <div class="tag" onclick="sendExample('Como emitir nota?')">Como emitir nota?</div>
+          <div class="tag" onclick="sendExample('Posso emitir nota para empresa?')">Posso emitir nota para empresa?</div>
+          <div class="tag" onclick="sendExample('Erro na emissão')">Erro na emissão</div>
+        </div>
+      </div>
+
+      <div style="font-size:13px;color:var(--muted);padding:6px 8px;border-radius:10px;">
+        <strong>Dica:</strong> Clique em <em>Emitir Nota Fiscal</em> para abrir o formulário e gerar uma nota em menos de 1 minuto.
+      </div>
+    </aside>
+  </main>
+
+<script>
+  // Pequena simulação de chat; no produto real isso faria chamadas a um backend / IA.
+  const chatWindow = document.getElementById('chatWindow');
+  const chatInput = document.getElementById('chatInput');
+  const sendBtn = document.getElementById('sendBtn');
+  const emitBtn = document.getElementById('emitBtn');
+
+  function appendMessage(text, who='bot'){
+    const div = document.createElement('div');
+    div.className = 'msg ' + (who === 'bot' ? 'bot' : 'user');
+    div.textContent = text;
+    chatWindow.appendChild(div);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+  }
+
+  function botReply(userMsg){
+    const msg = userMsg.toLowerCase();
+    // regras simples de resposta para demo
+    if(msg.includes('emit') || msg.includes('emitir') || msg.includes('como emitir')){
+      appendMessage('Para emitir, clique em "Emitir Nota Fiscal", preencha: cliente, serviço e valor. Depois clique em "Gerar Nota". Posso abrir o formulário para você agora?');
+    } else if(msg.includes('empresa') || msg.includes('emitir para empresa')){
+      appendMessage('Sim, como MEI você pode emitir nota para empresas. Informe o CNPJ ou razão social do cliente no campo "Dados do cliente".');
+    } else if(msg.includes('erro')){
+      appendMessage('Se a nota deu erro, verifique: 1) dados do cliente, 2) valor inválido, 3) se sua prefeitura exige certificado. Deseja ver um exemplo de erro comum?');
+    } else if(msg.includes('sim') || msg.includes('abrir')){
+      appendMessage('Ok! (Demo) Abrindo formulário de emissão... (na versão real, redirecionamos para a tela de emissão)');
+      // simple visual cue
+      highlightEmit();
+    } else {
+      appendMessage('Desculpe, ainda não sei responder isso nesta demo. Tente: "Como emitir nota?", "Posso emitir para empresa?" ou "Erro na emissão".');
+    }
+  }
+
+  sendBtn.addEventListener('click', ()=> {
+    const text = chatInput.value.trim();
+    if(!text) return;
+    appendMessage(text,'user');
+    chatInput.value = '';
+    setTimeout(()=> botReply(text), 600);
+  });
+
+  chatInput.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter'){ sendBtn.click(); e.preventDefault(); }
+  });
+
+  function sendExample(text){
+    appendMessage(text,'user');
+    setTimeout(()=> botReply(text), 500);
+  }
+
+  // Demo: highlight the Emit button to simulate opening the form
+  function highlightEmit(){
+    emitBtn.animate([
+      { boxShadow: '0 6px 18px rgba(11,132,255,0.12)', transform:'translateY(0)' },
+      { boxShadow: '0 14px 30px rgba(11,132,255,0.18)', transform:'translateY(-3px)' },
+      { boxShadow: '0 6px 18px rgba(11,132,255,0.12)', transform:'translateY(0)' }
+    ], { duration: 800, iterations: 2 });
+  }
+
+  // Accessibility: focus on input for quick demo
+  chatInput.focus();
+
+  // Seleciona o botão de voltar usando a classe .ghost da topbar
+  const btnVoltar = document.querySelector(".primary-btn");
+
+  // Ao clicar, redireciona para o dashboard
+  btnVoltar.addEventListener("click", () => {
+    window.location.href = "index4.html"; 
+  });
+</script>
+
+</script>
+</body>
+</html>

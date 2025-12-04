@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Login — NotaFácil MEI</title>
+<style>
+:root{
+    --bg:#f6f7fb;
+    --card:#ffffff;
+    --muted:#6b7280;
+    --accent:#0b84ff;
+    --accent-strong:#0066d6;
+    --success:#10b981;
+    --glass:rgba(255,255,255,0.6);
+    font-family:Inter, sans-serif;
+}
+body{
+    margin:0;
+    padding:0;
+    background:linear-gradient(180deg,#f6f7fb,#eef2f7);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+.app{
+    width:100%;
+    max-width:1500px;
+    display:flex;
+    background:var(--card);
+    border-radius:18px;
+    box-shadow:0 12px 40px rgba(16,24,40,0.12);
+    overflow:hidden;
+}
+.left{
+    flex:1;
+    background:#0066d6;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+.left img{
+    max-width:80%;
+    border-radius:12px;
+}
+.right{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:60px;
+    gap:18px;
+}
+.avatar{
+    width:80px;
+    height:80px;
+    /* background:var(--accent); */
+    border-radius:50%;
+}
+h1{
+    margin:0;
+    font-size:28px;
+    font-weight:700;
+    color:#111827;
+}
+label{
+    width:100%;
+    text-align:left;
+    font-size:14px;
+    color: black;
+    margin-top:10px;
+    font-weight: bold;
+}
+input{
+    width:100%;
+    padding:12px;
+    border-radius:12px;
+    border:1px solid #e6eefc;
+    font-size:15px;
+    outline:none;
+    transition: all 0.2s ease-in-out;
+}
+input:focus{
+    border-color:var(--accent);
+    box-shadow:0 4px 12px rgba(11, 133, 255, 0.158);
+}
+.login-btn{
+    width:60%;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:var(--accent);
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition: all 0.2s ease-in-out;
+}
+.login-btn:hover{
+    background:var(--accent-strong);
+    box-shadow:0 6px 20px rgba(11,132,255,0.2);
+    transform:translateY(-2px);
+}
+.mei-text, .signup-text{
+    font-size:13px;
+    color:var(--muted);
+}
+.mei-text a, .signup-text a{
+    color:var(--accent-strong);
+    font-weight:600;
+    text-decoration:none;
+}
+.mei-text a:hover, .signup-text a:hover{
+    text-decoration:underline;
+}
+.input-group{
+    width:100%;
+    max-width:360px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+</style>
+</head>
+<body>
+<div class="app">
+    <div class="left">
+        <img src="img/NF.png" alt="Imagem" />
+    </div>
+    <div class="right">
+        <div class="avatar"></div>
+        <h1>BEM-VINDO(A)</h1>
+
+        <div class="input-group">
+            <label>Usuário</label>
+            <input type="text" placeholder="Quésia Santos" />
+
+            <label>Senha</label>
+            <input type="password" placeholder="********" />
+
+            <label>Conta MEI</label>
+            <input type="text" placeholder="Número da conta MEI" />
+        </div>
+
+        <button class="login-btn">LOGIN</button>
+        <p class="mei-text">Ainda não tem conta MEI? <a href="#">Clique aqui para criar</a></p>
+        <p class="signup-text">Não tem conta? <a href="#">Cadastre-se</a></p>
+    </div>
+</div>
+
+<script>
+    // Seleciona o botão de voltar usando a classe .ghost da topbar
+    const btnVoltar = document.querySelector(".login-btn");
+
+    // Ao clicar, redireciona para o dashboard
+    btnVoltar.addEventListener("click", () => {
+        window.location.href = "index3.html"; 
+    });
+</script>
+</body>
+</html>

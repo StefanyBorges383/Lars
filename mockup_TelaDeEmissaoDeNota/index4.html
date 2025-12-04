@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Emitir Nota — NotaFácil MEI</title>
+<style>
+:root{
+    --bg:#f6f7fb;
+    --card:#ffffff;
+    --muted:#6b7280;
+    --accent:#0b84ff;
+    --accent-strong:#0066d6;
+    --success:#10b981;
+    --glass:rgba(255,255,255,0.6);
+    font-family:Inter, sans-serif;
+}
+body{
+    margin:0;
+    background:linear-gradient(180deg,#f6f7fb,#eef2f7);
+    padding:24px;
+    display:flex;
+    justify-content:center;
+}
+.app{
+    width:100%;
+    max-width:1500px;
+    background:var(--card);
+    border-radius:18px;
+    box-shadow:0 8px 30px rgba(16,24,40,0.08);
+    overflow:hidden;
+}
+.topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:20px 28px;
+    border-bottom:1px solid #eef0f5;
+    background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.4));
+}
+.brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+.logo{
+    width:44px;
+    height:44px;
+    border-radius:10px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-strong));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-weight:700;
+    font-size:18px;
+    box-shadow:0 6px 18px rgba(11,132,255,0.14);
+}
+.brand h1{ margin:0; font-size:16px; }
+.brand p{ margin:0; font-size:12px; color:var(--muted); }
+.main{
+    padding:40px;
+    display:flex;
+    flex-direction:column;
+}
+label{
+    display:block;
+    text-align:left;
+    font-size:14px;
+    margin-bottom:6px;
+    color: black;
+    font-weight: bold;
+    margin-top: 20px;
+}
+input, select, textarea{
+    width:100%;
+    padding:10px 12px;
+    border-radius:12px;
+    border:1px solid #0f4fbe3a;
+    font-size:14px;
+    outline:none;
+    margin-top: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.253);
+    
+}
+textarea{ height:80px; resize:none; }
+.actions{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    margin-top:20px;
+}
+.primary-btn{
+    background:var(--accent);
+    color:white;
+    border:none;
+    padding:15px 40px;
+    border-radius:10px;
+    font-size:17px;
+    cursor:pointer;
+    font-weight: bold;
+}
+.ghost{
+    background:transparent;
+    border:1px solid #e6eefc;
+    padding:12px 18px;
+    border-radius:10px;
+    color:var(--muted);
+    font-size:17px;
+    cursor:pointer;
+}
+
+</style>
+</head>
+<body>
+<main class="app">
+    <div class="topbar">
+        <div class="brand">
+            <div class="logo">NF</div>
+            <div>
+                <h1>NotaFácil MEI</h1>
+                <p>Preencha os dados da nota</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="main">
+
+        <div class="main-cards">
+            <label>Tipo de Nota</label>
+        <select>
+            <option>Prestação de Serviço</option>
+            <option>Venda de Produto</option>
+            <option>Locação de Equipamento</option>
+            <option>Consultoria</option>
+            <option>Treinamento e Cursos</option>
+            <option>Outros</option>
+        </select>
+        </div>
+
+        <div class="main-cards">
+            <label>Nome do Cliente</label>
+            <input type="text" placeholder="Digite o nome ou razão social" />
+        </div>
+
+        <div class="main-cards">
+            <label>CPF/CNPJ do Cliente</label>
+            <input type="text" placeholder="Apenas números" />
+        </div>
+
+        <div class="main-cards">
+            <label>Descrição do Serviço/Produto</label>
+            <textarea placeholder="Descreva o que foi prestado ou vendido"></textarea>
+        </div>
+
+        <div class="main-cards">
+            <label>Valor (R$)</label>
+            <input type="number" placeholder="Ex: 150.00" />
+        </div>
+
+        <div class="main-cards">
+            <label>Código de Serviço (opcional)</label>
+            <input type="text" placeholder="Ex: 07.02 — Serviços de informática" />
+        </div>
+
+        <div class="actions">
+            <button class="primary-btn">Emitir Nota</button>
+            <button class="ghost">Cancelar</button>
+        </div>
+    </section>
+</main>
+</body>
+</html>
+
+
+    <script>
+        // Seleciona o botão de voltar usando a classe .ghost da topbar
+        const btnVoltar = document.querySelector(".primary-btn");
+
+        // Ao clicar, redireciona para o dashboard
+        btnVoltar.addEventListener("click", () => {
+            window.location.href = "index5.html"; 
+        });
+    </script>
+
+</body>
+</html>
+
+
+
